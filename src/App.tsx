@@ -1,0 +1,26 @@
+import { Routes, Route } from "react-router-dom";
+import Navbar from "./components/Navbar";
+import Home from "./pages/Home/Home";
+import Footer from "./components/Footer/Footer";
+import Policy from "./pages/Policy/Policy";
+import AICarpenterChat from "./components/Body/AICarpenterChat";
+
+
+
+function App() {
+  return (
+    <>
+      <Navbar />
+      <AICarpenterChat />
+      <main className="pt-24 min-h-screen">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/policy" element={<Policy />} />
+        </Routes>
+        <Footer />
+      </main>
+    </>
+  );
+}
+
+export default App;
