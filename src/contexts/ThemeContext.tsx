@@ -43,7 +43,7 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
       root.classList.add("light");
       root.classList.remove("dark");
       body.style.background = "#faf7f2"; // warm cream
-      body.style.color = "#4c3b2a";
+
     }
 
     // Smooth transition

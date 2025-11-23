@@ -9,7 +9,7 @@ import AICarpenterChat from "./components/Body/AICarpenterChat";
 
 function App() {
   return (
-    <>
+    <div style={{}}>
       <Navbar />
       <AICarpenterChat />
       <main className="pt-24 min-h-screen">
@@ -19,7 +19,7 @@ function App() {
         </Routes>
         <Footer />
       </main>
-    </>
+    </div>
   );
 }
 
