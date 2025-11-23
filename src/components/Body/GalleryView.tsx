@@ -55,11 +55,11 @@ const GalleryView = () => {
           viewport={{ once: true }}
           className="text-center mb-20"
         >
-          <h1 className="text-6xl md:text-7xl font-bold mb-4">
-            <span style={{ color: isDark ? "#fff" : "#000" }}>Reborn</span>
+          <h1 className="text-5xl md:text-7xl font-bold mb-4">
+            <span style={{ color: isDark ? "#fff" : "#000" }}>Our Gallery</span>
             <br />
             <span className="font-bold" style={{ color: bronze }}>
-              Masterpieces
+              Of Masterpieces
             </span>
           </h1>
           <p
