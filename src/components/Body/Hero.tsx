@@ -7,15 +7,28 @@ import furnitureImg from "../../../src/assets/brown.jpg";
 export default function Hero() {
   const { theme } = useTheme();
   const isDark = theme === "dark";
-
-  // Only subtle bronze accents
   const bronze = "#C1A170";
 
-  const stats = [
-    { value: "1 Photo", label: "Upload" },
-    { value: "14 Days", label: "Delivery" },
-    { value: "100%", label: "Identical" },
-    { value: "Premium", label: "Materials" },
+  // Updated 3-step process
+  const steps = [
+    {
+      number: "01",
+      title: "Upload",
+      subtitle: "Your Files",
+      desc: "Photos, videos, sketches — anything",
+    },
+    {
+      number: "02",
+      title: "We Build",
+      subtitle: "It",
+      desc: "AI precision + master craftsmanship",
+    },
+    {
+      number: "03",
+      title: "Delivered",
+      subtitle: "Timely",
+      desc: "Reliably, across Africa",
+    },
   ];
 
   return (
@@ -48,34 +61,29 @@ export default function Hero() {
         ))}
       </div>
 
-      {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center px-6 py-24">
         <div className="container mx-auto max-w-7xl">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
-            {/* LEFT — Clean, Minimal Text */}
+            {/* LEFT — Text */}
             <motion.div
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, ease: "easeOut" }}
-              className="space-y-10"
+              className="space-y-12"
             >
-              {/* Headline */}
+              {/* New Headline */}
               <motion.h1
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.2, duration: 0.9 }}
-                className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight tracking-tight"
+                transition={{ delay: 0.2, duration: 1 }}
+                className="text-5xl md:text-6xl lg:text-6xl font-bold leading-tight tracking-tight"
                 style={{ color: isDark ? "#ffffff" : "#000000" }}
               >
-                Upload a photo,
+                Upload your designs.
                 <br />
-                <span className="font-bold">
-                  We build the{" "}
-                  <span style={{ color: bronze, fontWeight: 600 }}>
-                    exact replica
-                  </span>
-                  .
-                </span>
+                Our AI interprets them.
+                <br />
+                <span style={{ color: bronze }}>We build it.</span>
               </motion.h1>
 
               {/* Subtext */}
@@ -86,12 +94,12 @@ export default function Hero() {
                 className="text-lg md:text-xl font-light leading-relaxed max-w-xl"
                 style={{ color: isDark ? "#e2e2e2" : "#333333" }}
               >
-                Our AI analyzes your furniture from a single image. Master
-                craftsmen hand-build a perfect duplicate using premium
-                materials. Delivered in 14 days.
+                From a single photo or sketch — our AI extracts every detail.
+                Master craftsmen bring it to life with premium materials.
+                Delivered with trust and precision.
               </motion.p>
 
-              {/* COMING SOON Button — Minimal Bronze Accent */}
+              {/* Coming Soon Button */}
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -127,7 +135,7 @@ export default function Hero() {
               </motion.div>
             </motion.div>
 
-            {/* RIGHT — Image with Floating Stats */}
+            {/* RIGHT — Image + Floating 3-Step Cards */}
             <motion.div
               initial={{ opacity: 0, y: 60 }}
               animate={{ opacity: 1, y: 0 }}
@@ -152,38 +160,60 @@ export default function Hero() {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
               </motion.div>
 
-              {/* Floating Stats — Clean & Minimal */}
-              {stats.map((stat, i) => (
+              {/* Floating Step Cards */}
+              {steps.map((step, i) => (
                 <motion.div
                   key={i}
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: 0.8 + i * 0.15, duration: 0.6 }}
-                  className="absolute p-4 rounded-2xl backdrop-blur-xl border shadow-xl"
+                  initial={{ opacity: 0, scale: 0.8, y: 50 }}
+                  animate={{ opacity: 1, scale: 1, y: 0 }}
+                  transition={{
+                    delay: 0.9 + i * 0.2,
+                    duration: 0.7,
+                    ease: "easeOut",
+                  }}
+                  className="absolute p-6 rounded-3xl backdrop-blur-[120px] border shadow-2xl"
                   style={{
                     background: isDark
-                      ? "rgba(255,255,255,0.08)"
-                      : "rgba(255,255,255,0.7)",
+                      ? "rgba(255,255,255,0.09)"
+                      : "rgba(255,255,255,0.88)",
                     borderColor: isDark
-                      ? "rgba(255,255,255,0.15)"
+                      ? "rgba(255,255,255,0.18)"
                       : "rgba(0,0,0,0.1)",
-                    top: i < 2 ? "10%" : "auto",
-                    bottom: i >= 2 ? "10%" : "auto",
-                    left: i % 2 === 0 ? "-10%" : "auto",
-                    right: i % 2 === 1 ? "-10%" : "auto",
+                    top: i === 0 ? "8%" : i === 1 ? "38%" : "68%",
+                    left: i === 1 ? "50%" : "-8%",
+                    transform: i === 1 ? "translateX(-50%)" : "translateX(0)",
+                    width: i === 1 ? "320px" : "280px",
                   }}
+                  whileHover={{ scale: 1.06 }}
                 >
+                  <div className="flex items-center gap-3 mb-2">
+                    <span
+                      className="text-3xl font-bold"
+                      style={{ color: bronze }}
+                    >
+                      {step.number}
+                    </span>
+                    <div>
+                      <p
+                        className="text-2xl font-bold"
+                        style={{ color: isDark ? "#000" : "#000" }}
+                      >
+                        {step.title}
+                      </p>
+                      <p
+                        className="text-lg font-medium opacity-80"
+                
+                        style={{ color: isDark ? "#000" : bronze}}
+                      >
+                        {step.subtitle}
+                      </p>
+                    </div>
+                  </div>
                   <p
-                    className="font-bold text-xl"
-                    style={{ color: isDark ? "#ffffff" : "#000000" }}
+                    className="text-sm opacity-70 mt-2"
+                    style={{ color: isDark ? "#000" : "#444" }}
                   >
-                    {stat.value}
-                  </p>
-                  <p
-                    className="text-xs font-medium opacity-70"
-                    style={{ color: isDark ? "#e2e2e2" : "#333" }}
-                  >
-                    {stat.label}
+                    {step.desc}
                   </p>
                 </motion.div>
               ))}

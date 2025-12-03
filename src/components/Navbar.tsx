@@ -1,4 +1,4 @@
-// src/components/Navbar.tsx — FINAL, FLAWLESS VERSION
+// src/components/Navbar.tsx — UPDATED WITH COMING SOON + NEW MENU LABELS
 import { useState } from "react";
 import { Menu, X, Sparkles, Sun, Moon } from "lucide-react";
 import { motion, useScroll, useTransform } from "framer-motion";
@@ -8,6 +8,8 @@ import yare from "../../src/assets/vite.png";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const [comingSoon, setComingSoon] = useState(false);
+
   const { theme, toggleTheme } = useTheme();
   const isDark = theme === "dark";
   const navigate = useNavigate();
@@ -19,15 +21,13 @@ export default function Navbar() {
   const bronze = "#C1A170";
   const bronzeGlow = "#d4ad7b";
 
-  // SMOOTH SCROLL TO SECTION
+  // Smooth scroll logic
   const smoothScroll = (id: string) => {
     setIsOpen(false);
-  
+
     if (window.location.pathname !== "/") {
-      // Navigate home first, THEN scroll
       navigate("/", { replace: false });
-  
-      // Delay scroll so page loads first
+
       setTimeout(() => {
         const element = document.getElementById(id);
         if (element) {
@@ -35,7 +35,6 @@ export default function Navbar() {
         }
       }, 350);
     } else {
-      // Already on home → scroll instantly
       const element = document.getElementById(id);
       if (element) {
         element.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -43,15 +42,66 @@ export default function Navbar() {
     }
   };
 
-  // NAVIGATE TO POLICY PAGE
+  // Navigate to policy page
   const goToPolicy = () => {
     setIsOpen(false);
     navigate("/policy");
   };
 
+  // COMING SOON MODAL
+  const openComingSoonModal = () => {
+    setIsOpen(false);
+    setComingSoon(true);
+  };
+
   return (
     <>
-      {/* Floating Golden Dust */}
+      {/* COMING SOON POPUP */}
+      {comingSoon && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          className="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+          onClick={() => setComingSoon(false)}
+        >
+          <motion.div
+            initial={{ scale: 0.9, y: 20 }}
+            animate={{ scale: 1, y: 0 }}
+            exit={{ scale: 0.9, y: 20 }}
+            onClick={(e) => e.stopPropagation()}
+            className="bg-white rounded-2xl shadow-2xl max-w-lg w-full p-8 relative"
+          >
+            <button
+              onClick={() => setComingSoon(false)}
+              className="absolute top-4 right-4 text-gray-400 hover:text-gray-600 transition"
+            >
+              <X size={28} />
+            </button>
+
+            <h3 className="text-3xl font-bold text-gray-900 mb-4">
+              Coming Soon!
+            </h3>
+            <p className="text-lg text-gray-700 leading-relaxed">
+              Clonekraft is launching soon. You’ll be able to upload your
+              designs and order instantly once our app goes live.
+            </p>
+
+            <div className="mt-8 flex justify-end">
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                onClick={() => setComingSoon(false)}
+                className="px-6 py-3 bg-black text-white rounded-full font-medium"
+              >
+                Got it
+              </motion.button>
+            </div>
+          </motion.div>
+        </motion.div>
+      )}
+
+      {/* Floating particles */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none z-10">
         {[...Array(45)].map((_, i) => (
           <motion.div
@@ -76,7 +126,7 @@ export default function Navbar() {
         ))}
       </div>
 
-      {/* Glass Navbar */}
+      {/* NAVBAR */}
       <motion.nav
         className="fixed top-0 left-0 right-0 z-50 border-b"
         style={{
@@ -96,18 +146,13 @@ export default function Navbar() {
           <div className="flex items-center justify-between">
             {/* Logo */}
             <a href="/" className="flex items-center gap-3">
-              <img
-                src={yare}
-                className="w-14 h-9 object-contain"
-                alt="Clonekraft"
-              />
+              <img src={yare} className="w-14 h-9 object-contain" alt="Logo" />
             </a>
 
-            {/* Desktop Navigation */}
+            {/* Desktop Nav */}
             <div className="hidden md:flex items-center gap-10">
               {[
-                { name: "How It Works", id: "how-it-works" },
-                { name: "Gallery", id: "gallery" },
+                { name: "Product Overview", id: "product" },
                 { name: "Our Policy", action: goToPolicy },
                 { name: "FAQ", id: "faq" },
                 { name: "Contact", id: "contact" },
@@ -148,9 +193,9 @@ export default function Navbar() {
                   )}
                 </button>
 
-                {/* CTA */}
+                {/* CTA — COMING SOON */}
                 <button
-                  onClick={() => smoothScroll("upload")}
+                  onClick={openComingSoonModal}
                   className="px-8 py-3.5 rounded-full font-bold text-black flex items-center gap-2 transition-all hover:scale-105 active:scale-95 shadow-lg"
                   style={{
                     background: `linear-gradient(135deg, ${bronze}, ${bronzeGlow})`,
@@ -162,7 +207,7 @@ export default function Navbar() {
               </div>
             </div>
 
-            {/* Mobile Toggle */}
+            {/* Mobile Menu Toggle */}
             <button
               onClick={() => setIsOpen(!isOpen)}
               className="md:hidden p-3 rounded-xl backdrop-blur-xl border"
@@ -181,7 +226,7 @@ export default function Navbar() {
             </button>
           </div>
 
-          {/* Mobile Menu */}
+          {/* Mobile Dropdown */}
           {isOpen && (
             <motion.div
               initial={{ opacity: 0, height: 0 }}
@@ -192,8 +237,7 @@ export default function Navbar() {
             >
               <div className="flex flex-col gap-7">
                 {[
-                  { name: "How It Works", id: "how-it-works" },
-                  { name: "Gallery", id: "gallery" },
+                  { name: "Product Overview", id: "product" },
                   { name: "Our Policy", action: goToPolicy },
                   { name: "FAQ", id: "faq" },
                   { name: "Contact", id: "contact" },
@@ -223,7 +267,7 @@ export default function Navbar() {
                   </button>
 
                   <button
-                    onClick={() => smoothScroll("upload")}
+                    onClick={openComingSoonModal}
                     className="px-12 py-5 rounded-full font-bold text-black"
                     style={{
                       background: `linear-gradient(135deg, ${bronze}, ${bronzeGlow})`,

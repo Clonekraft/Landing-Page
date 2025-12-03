@@ -5,6 +5,7 @@ import GalleryView from "../../components/Body/GalleryView";
 import Testimonials from "../../components/Body/Testimonials";
 import FAQ from "../../components/Body/FAQ";
 import Contact from "../../components/Footer/Contact";
+import ProductOverview from "../../components/Body/ProductOverview";
 
 const Home = () => {
   return (
@@ -13,6 +14,10 @@ const Home = () => {
       <Hero />
 
       {/* How It Works */}
+      <div id="product">
+        <ProductOverview />
+      </div>
+
       <div id="how-it-works">
         <FullPage />
       </div>

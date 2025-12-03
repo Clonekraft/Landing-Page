@@ -1,20 +1,8 @@
-// src/components/FullPage.tsx — THE FINAL MASTERPIECE
+// src/components/FullPage.tsx — FINAL MASTERPIECE (Updated)
 import { motion } from "framer-motion";
-import {
-
-  Camera,
-  Hammer,
-  Truck,
-
-  Gem,
-
-  Palette,
-  Ruler,
-
-} from "lucide-react";
+import { Camera, Hammer, Truck, Gem, Palette, Ruler } from "lucide-react";
 import { useTheme } from "../../contexts/ThemeContext";
-
-import woodImg from "../../../src/assets/burn.jpg";
+import woodImg from "../../../src/assets/dec/d.jpg";
 
 export default function FullPage() {
   const { theme } = useTheme();
@@ -36,7 +24,7 @@ export default function FullPage() {
 
   return (
     <>
-      {/* SECTION 1 — HEROIC HOW IT WORKS */}
+      {/* SECTION 1 — HOW IT WORKS */}
       <section className="py-40 relative overflow-hidden">
         <div className="container mx-auto px-6 max-w-7xl text-center">
           <motion.h2
@@ -73,20 +61,20 @@ export default function FullPage() {
               {
                 icon: Camera,
                 num: "01",
-                title: "Upload Your Photo",
-                desc: "Any angle. Any lighting. Our AI understands.",
+                title: "Upload Your Files",
+                desc: "Photos, videos, sketches — anything works.",
               },
               {
                 icon: Hammer,
                 num: "02",
-                title: "We Rebirth It",
-                desc: "Master carpenters build it by hand — no shortcuts.",
+                title: "We Build It",
+                desc: "Master craftsmen execute with AI precision.",
               },
               {
                 icon: Truck,
                 num: "03",
-                title: "Delivered in 14 Days",
-                desc: "Fully assembled. White-glove. Ready to live in.",
+                title: "Delivered Timely",
+                desc: "Reliable, fully assembled, across Africa.",
               },
             ].map((step) => (
               <motion.div
@@ -126,7 +114,7 @@ export default function FullPage() {
         </div>
       </section>
 
-      {/* SECTION 2 — MATERIALS & CRAFT */}
+      {/* SECTION 2 — MATERIALS & CRAFT (UPDATED) */}
       <section className="py-40">
         <div className="container mx-auto px-6 max-w-7xl">
           <motion.div
@@ -145,10 +133,10 @@ export default function FullPage() {
               </span>
             </h2>
             <p
-              className="text-xl font-light max-w-3xl mx-auto"
-              style={{ color: isDark ? "#ccc" : "#444" }}
+              className="text-xl md:text-2xl font-medium max-w-4xl mx-auto leading-relaxed"
+              style={{ color: isDark ? "#ddd" : "#222" }}
             >
-              We don’t replicate furniture. We honor it.
+              We don’t just replicate furniture. We perfect it.
             </p>
           </motion.div>
 
@@ -161,8 +149,8 @@ export default function FullPage() {
             >
               <img
                 src={woodImg}
-                alt="Premium wood"
-                className="rounded-3xl shadow-3xl w-full"
+                alt="Premium hardwood and materials"
+                className="rounded-3xl shadow-3xl w-full object-cover"
               />
             </motion.div>
 
@@ -171,45 +159,66 @@ export default function FullPage() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 1.2 }}
-              className="space-y-10"
+              className="space-y-12"
             >
+              {/* First Feature — Updated */}
+              <motion.div
+                initial={{ opacity: 0, x: 50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.2, duration: 0.8 }}
+                className="flex gap-6"
+              >
+                <Gem size={48} style={{ color: bronze, flexShrink: 0 }} />
+                <div>
+                  <h4
+                    className="text-2xl md:text-3xl font-bold mb-3"
+                    style={{ color: isDark ? "#fff" : "#000" }}
+                  >
+                    Only Premium Boards & Hardwoods
+                  </h4>
+                  <p
+                    className="text-lg leading-relaxed"
+                    style={{ color: isDark ? "#ddd" : "#444" }}
+                  >
+                    MFC, E1-grade boards, Egger & Krono — all sustainably
+                    sourced.
+                  </p>
+                </div>
+              </motion.div>
+
+              {/* Remaining Features */}
               {[
-                {
-                  icon: Gem,
-                  title: "Only Premium Hardwoods",
-                  desc: "Oak, walnut, mahogany — sourced sustainably",
-                },
                 {
                   icon: Palette,
                   title: "Perfect Color Matching",
-                  desc: "Every stain, every finish — indistinguishable",
+                  desc: "Every stain, finish, and tone — indistinguishable from the original.",
                 },
                 {
                   icon: Ruler,
                   title: "Millimeter Precision",
-                  desc: "CNC + hand-finishing = flawless proportions",
+                  desc: "AI-guided specs + hand-finishing = flawless proportions.",
                 },
               ].map((feat, i) => (
                 <motion.div
                   key={i}
                   initial={{ opacity: 0, x: 50 }}
                   whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ delay: i * 0.2, duration: 0.8 }}
+                  transition={{ delay: 0.4 + i * 0.2, duration: 0.8 }}
                   className="flex gap-6"
                 >
                   <feat.icon
-                    size={40}
+                    size={48}
                     style={{ color: bronze, flexShrink: 0 }}
                   />
                   <div>
                     <h4
-                      className="text-2xl font-bold mb-2"
+                      className="text-2xl md:text-3xl font-bold mb-3"
                       style={{ color: isDark ? "#fff" : "#000" }}
                     >
                       {feat.title}
                     </h4>
                     <p
-                      className="text-lg"
+                      className="text-lg leading-relaxed"
                       style={{ color: isDark ? "#ddd" : "#444" }}
                     >
                       {feat.desc}
@@ -222,8 +231,8 @@ export default function FullPage() {
         </div>
       </section>
 
-      {/* SECTION 3 — TESTIMONIAL / VIBE */}
-      <section className="py-32 text-center">
+      {/* SECTION 3 — TESTIMONIAL */}
+      {/* <section className="py-32 text-center">
         <motion.blockquote
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -251,67 +260,6 @@ export default function FullPage() {
         >
           — Ibeneme I, Paris, France
         </motion.p>
-      </section>
-
-      {/* SECTION 4 — FINAL CTA — MONUMENTAL */}
-      {/* <section className="py-56 relative overflow-hidden">
-        <div className="container mx-auto px-6 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 80 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 1.6, ease: "easeOut" }}
-          >
-            <h2
-              className="text-4xl md:text-6xl font-bold leading-none mb-16"
-              style={{ color: isDark ? "#fff" : "#000" }}
-            >
-              Your Dream
-              <br />
-              <span
-                className="font-bold text-6xl md:text-10xl"
-                style={{ color: bronze }}
-              >
-                Deserves to Exist
-              </span>
-            </h2>
-
-            <motion.div
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.6, duration: 1 }}
-            >
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="relative px-4 py-4 rounded-full text-3xl font-bold tracking-wider text-black overflow-hidden shadow-4xl"
-                style={{
-                  background: "linear-gradient(135deg, #C1A170, #e6c08e)",
-                  boxShadow: isDark
-                    ? "0 0 120px #C1A170cc"
-                    : "0 40px 100px rgba(193,161,112,0.7)",
-                }}
-              >
-                <span className="flex items-center gap-6 text-[16px] font-bold">
-                  <Sparkles className="w-6 h-6" />
-                  JOIN THE WAITLIST
-                  <ArrowRight className="w-6 h-6" />
-                </span>
-              </motion.button>
-            </motion.div>
-
-            <p
-              className="mt-16 text-xl font-bold"
-              style={{ color: isDark ? "#999" : "#555" }}
-            >
-              Limited spots. First 500 get{" "}
-              <span className="font-bold" style={{ color: bronze }}>
-                free cloning
-              </span>
-              .
-            </p>
-          </motion.div>
-        </div>
       </section> */}
     </>
   );

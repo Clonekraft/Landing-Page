@@ -1,4 +1,4 @@
-// src/components/Footer.tsx — FINAL VERSION
+// src/components/Footer.tsx — UPDATED WITH SOCIAL HANDLES
 import { motion } from "framer-motion";
 import { Sparkles, Mail } from "lucide-react";
 
@@ -26,7 +26,7 @@ const Footer = () => {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true }}
-          className="grid md:grid-cols-3 gap-12 text-center md:text-left"
+          className="grid md:grid-cols-4 gap-12 text-center md:text-left"
         >
           {/* Brand */}
           <motion.div variants={item}>
@@ -59,6 +59,56 @@ const Footer = () => {
             <p className="text-gray-500 text-xs mt-4">
               Replies within hours · Always human
             </p>
+          </motion.div>
+
+          {/* Social Handles */}
+          <motion.div
+            variants={item}
+            className="flex flex-col items-center md:items-start"
+          >
+            <p className="text-gray-500 text-xs uppercase tracking-widest mb-3">
+              Follow Us
+            </p>
+
+            <a
+              href="https://instagram.com/Clonekraft"
+              target="_blank"
+              className="text-white text-sm hover:underline mb-2"
+            >
+              @Clonekraft (Instagram)
+            </a>
+
+            <a
+              href="https://www.tiktok.com/@clonkraft"
+              target="_blank"
+              className="text-white text-sm hover:underline mb-2"
+            >
+              @clonkraft (TikTok)
+            </a>
+
+            <a
+              href="https://twitter.com/Clonekraft"
+              target="_blank"
+              className="text-white text-sm hover:underline mb-2"
+            >
+              @Clonekraft (X/Twitter)
+            </a>
+
+            <a
+              href="#"
+              target="_blank"
+              className="text-white text-sm hover:underline mb-2"
+            >
+              Clonekraft (Facebook Page)
+            </a>
+
+            <a
+              href="#"
+              target="_blank"
+              className="text-white text-sm hover:underline"
+            >
+              Clonekraft (LinkedIn)
+            </a>
           </motion.div>
 
           {/* Closing Line */}

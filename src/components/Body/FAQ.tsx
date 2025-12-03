@@ -21,10 +21,6 @@ const faqs = [
     q: "What materials do you use?",
     a: "Only solid hardwoods: oak, walnut, mahogany, teak. Never veneers or MDF. All finishes are hand-applied, non-toxic, and heirloom-grade.",
   },
-  {
-    q: "When can I order?",
-    a: "We’re launching soon. Join the waitlist — the first 500 get their first piece cloned for free.",
-  },
 ];
 
 const FAQ = () => {

@@ -2,9 +2,9 @@
 import { motion } from "framer-motion";
 import { useTheme } from "../../contexts/ThemeContext";
 
-import seatImg from "../../../src/assets/coffee.jpg";
-import workshopImg from "../../../src/assets/burn.jpg";
-import woodImg from "../../../src/assets/gray.jpg";
+import seatImg from "../../../src/assets/dec/e.jpg";
+import workshopImg from "../../../src/assets/dec/f.jpg";
+import woodImg from "../../../src/assets/dec/d.jpg";
 
 const Gallery = () => {
   const { theme } = useTheme();
