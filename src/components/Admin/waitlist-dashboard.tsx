@@ -405,7 +405,7 @@ export default function WaitlistDashboard() {
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: i * 0.05 }}
                       // Add padding-left conditional on showCheckboxes
-                      className={`p-4 rounded-xl border flex items-start gap-4 shadow-sm transition-all duration-300 ${
+                      className={`p-4 rounded-xl border flex items-start gap-4 transition-all duration-300 ${
                         showCheckboxes ? "pl-2" : "pl-4"
                       }`}
                       style={{
