@@ -217,6 +217,7 @@ export default function WaitlistDashboard() {
                     backgroundColor: isDark ? "#111" : "#fff",
                     color: text,
                     borderColor: border,
+                    fontSize: "16px",
                   }}
                 />
               </label>
@@ -233,6 +234,7 @@ export default function WaitlistDashboard() {
                     backgroundColor: isDark ? "#111" : "#fff",
                     color: text,
                     borderColor: border,
+                    fontSize: "16px",
                   }}
                 />
                 <button
