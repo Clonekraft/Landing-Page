@@ -69,7 +69,7 @@ const Footer = () => {
             <div className="flex items-start gap-3 text-gray-300 text-sm leading-relaxed max-w-xs">
               <MapPin size={18} className="mt-0.5 flex-shrink-0" />
               <p>
-                Web No. 9 Inner Northern Road,
+                No. 9 Inner Northern Road,
                 <br />
                 Behind Chicken Republic,
                 <br />
